@@ -94,5 +94,65 @@
             <p>&copy; 2025 E-commerce Shop. All rights reserved.</p>
         </div>
     </footer>
+
+<!-- [1] -->
+    <div id="modal-1" class="modal" aria-hidden="true">
+
+    <!-- [2] -->
+        <div tabindex="-1" data-micromodal-close>
+
+            <!-- [3] -->
+            <div role="dialog" aria-modal="true" aria-labelledby="modal-1-title" >
+
+
+            <header>
+                <h2 id="modal-1-title">
+                Shopping Cart
+                </h2>
+
+                <!-- [4] -->
+                <button aria-label="Close modal" data-micromodal-close></button>
+            </header>
+
+            <div id="modal-1-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="./assets/images/camiseta_roxa.jpg" alt="T-Shirt"></td>
+                            <td>T-Shirt</td>
+                            <td>$29.99</td>
+                            <td><input type="number" value="1" min="1"></td>
+                            <td>$29.99</td>
+                            <td><button id="remove">Remove</button></td>
+                        </tr>
+                        <tr>
+                            <td><img src="./assets/images/camiseta_roxa.jpg" alt="T-Shirt"></td>
+                            <td>T-Shirt</td>
+                            <td>$39.99</td>
+                            <td><input type="number" value="1" min="1"></td>
+                            <td>$39.99</td>
+                            <td><button id="remove">Remove</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <span id="cart-total">Total: $00.00</span>
+                    <button id="checkout">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
 </body>
 </html>
