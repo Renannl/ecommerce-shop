@@ -1,0 +1,46 @@
+header {
+    grid-area: header;
+    background-color: #222222;
+    padding: 1.8rem 0;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    width: 100%;
+}
+
+.header-left {
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.hamburguer-menu {
+    height: 2rem;
+    width: 1.5rem;
+    background: transparent;
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.3rem;
+    cursor: pointer;
+}
+
+.hamburguer-menu span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: #ffffff;
+    margin-top: 4px;
+}
+
+.header-main {
+    display: block;
+    background-color: var(--dark-neutral);
+    
+}
