@@ -1,5 +1,10 @@
 :root {
-    --dark-netral: #111111;
+    --dark-neutral: #111111;
+    --neutral: #ffffff;
+    --primary-color-hover: #834de8;
+    --primary-color: #6f2ca9;
+    --dark-grey: #29272a;
+    --light-grey: #EDEDED;
 }
 
 body {

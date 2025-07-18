@@ -9,11 +9,12 @@
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/products.css">
     <title>E-commerce Shop</title>
 </head>
 <body>
-    <header>
-        <div class="header-content">
+    <header class="header">
+        <div class="header-content ">
             <div class="header-left">
 
                 <button class="hamburguer-menu">
@@ -22,7 +23,7 @@
                     <span></span>
                 </button>
 
-                <a href="">
+                <a class="logo" href="">
                     <img src="./assets/images/logo.svg" alt="E-commerce Shop Logo">
                 </a>
             </div>
@@ -42,40 +43,39 @@
                         </li>
                     </ul>
                 </nav>
-                <button>
+                <button class="cart" aria-label="Open Cart" data-micromodal-trigger="modal-1">
                     <img src="./assets/images/icone_carrinho.svg" alt="Cart">
-                    Cart
+                    <span class="cart-count">0</span>
                 </button>
-
         </div>
     </header>
 
     <main>
-        <section>
+        <section class="products">
             <h2>Products</h2>
             <ul>
-                <li>
+                <li class="product">
                     <figure>
                         <img src="./assets/images/camiseta_roxa.jpg" alt="T-Shirt">
                         <figcaption>T-Shirt</figcaption>
                     </figure>
-                    <div>
-                        <span>Price: $29.99</span>
+                    <div class="info"> 
+                        <span class="price">Price: $29.99</span>
                         <span>Color : Purple</span>
                         <span>Size: M</span>
-                        <button>Add to Cart</button>
+                        <button class="add-to-cart">Add to Cart</button>
                     </div>
                 </li>
-                <li>
+                <li class="product">
                     <figure>
                         <img src="./assets/images/camiseta_roxa.jpg" alt="T-Shirt">
                         <figcaption>T-Shirt</figcaption>
                     </figure>
-                    <div>
-                        <span>Price: $39.99</span>
+                    <div class="info">
+                        <span class="price">Price: $39.99</span>
                         <span>Color : Purple</span>
                         <span>Size: L</span>
-                        <button>Add to Cart</button>
+                        <button class="add-to-cart">Add to Cart</button>
                     </div>
                 </li>
             </ul>

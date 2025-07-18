@@ -1,6 +1,6 @@
 header {
     grid-area: header;
-    background-color: #222222;
+    background-color: var(--dark-neutral);
     padding: 1.8rem 0;
 }
 
@@ -13,7 +13,6 @@ header {
 }
 
 .header-left {
-    background-color: aqua;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -40,7 +39,78 @@ header {
 }
 
 .header-main {
-    display: block;
+    display: none;
     background-color: var(--dark-neutral);
-    
+    position: absolute;
+    top: 5rem;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+}
+
+.header-main ul {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem 0;
+}
+
+.header-main ul li a {
+    color: var(--neutral);
+    letter-spacing: 0.1rem;
+    text-decoration: none;
+    padding: 1rem;
+}
+
+.header-main ul li a:hover {
+    background-color: var(--primary-color-hover);
+}
+
+.header.active-menu .header-main {
+    display: block;
+}
+
+.cart {
+    background-color: transparent;
+    border: 0;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    position: relative;
+}
+
+.cart span {
+    background-color: var(--primary-color);
+    color: var(--neutral);
+    font-weight: 600;
+    font-size: 0.75rem;
+    position: absolute;
+    top: 27px;
+    left: 30px;
+    padding: 3px;
+    border-radius: 50%;
+
+    display: flex;
+    width: 16px;
+    height: 16px;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (min-width: 940px) {
+    .header .header-main {
+        display: block;
+        position: static;
+        width: auto;
+    }
+
+    .header .header-main ul {
+        flex-direction: row;
+    }
+}
+
+@media (min-width:1440px) {
+    .header{
+        max-width: 1440px;
+        margin: 0 auto;
+    }
 }
