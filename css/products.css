@@ -34,7 +34,7 @@ main section ul {
 }
 
 .product figcaption {
-    background-color: var(--dark-grey);
+    background-color: var(--dark-gray);
     color: var(--neutral);
     font-size: 1.2rem;
     font-weight: bold;
@@ -52,7 +52,7 @@ main section ul {
 
 .product .info span,
 .product .info strong {
-    color: var(--dark-grey);
+    color: var(--dark-gray);
     font-size: 0.9rem;
     letter-spacing: 0.1rem;
 }

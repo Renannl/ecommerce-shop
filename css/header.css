@@ -1,6 +1,5 @@
 header {
     grid-area: header;
-    background-color: var(--dark-neutral);
     padding: 1.8rem 0;
 }
 
