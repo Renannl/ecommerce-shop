@@ -2,10 +2,12 @@
     --dark-neutral: #111111;
     --neutral: #ffffff;
     --primary-color-hover: #834de8;
-    --primary-color: #6f2ca9;
+    --primary-color: #6528d3;
     --dark-grey: #29272a;
     --light-grey: #EDEDED;
+    --light-purple: #bca2ed;
 }
+
 
 body {
     font-family: "Roboto", sans-serif;
