@@ -18,9 +18,12 @@ main section ul {
 }
 
 .product {
-    background-color: var(--neutral);
     max-width: 368px;
     border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--dark-gray);
 }
 
 .products figure img {
@@ -52,7 +55,7 @@ main section ul {
 
 .product .info span,
 .product .info strong {
-    color: var(--dark-gray);
+    color: var(--neutral);
     font-size: 0.9rem;
     letter-spacing: 0.1rem;
 }
@@ -79,7 +82,6 @@ main section ul {
     background-color: var(--primary-color-hover);
 }
 
-/* === TABLET === */
 @media (min-width: 769px) {
     main {
         margin: 0 auto;
@@ -92,7 +94,6 @@ main section ul {
     }
     }
 
-/* === DESKTOP === */
 @media (min-width: 1170px) {
     main section {
         max-width: 1170px;

@@ -105,6 +105,10 @@ header {
     .header .header-main ul {
         flex-direction: row;
     }
+
+    .hamburguer-menu {
+        display: none;
+    }
 }
 
 @media (min-width:1440px) {
