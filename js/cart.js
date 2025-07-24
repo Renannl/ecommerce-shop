@@ -16,16 +16,13 @@ Objetivo 3 - atualizar valores do carrinho:
 */
 
 const btnAddToCart = document.querySelectorAll(".add-to-cart");
-const cartCounter = document.querySelector(".cart-count");
 
 btnAddToCart.forEach((button) => {
     button.addEventListener("click", (event) => {
-    let currentCount = parseInt(cartCounter.innerHTML)
-    cartCounter.innerHTML = currentCount + 1
 
     const elementProduct = event.target.closest(".product")
     const productId = elementProduct.dataset.id
-    const productName = elementProduct.querySelector(".info").textContent
+    const productName = elementProduct.querySelector(".name").textContent
     const productImage = elementProduct.querySelector("img").getAttribute("src")
     const productPrice = parseFloat(elementProduct.querySelector(".price").textContent.replace("$", ""))
 
@@ -40,7 +37,7 @@ btnAddToCart.forEach((button) => {
             id: productId,
             name: productName,
             image: productImage,
-            price: productImage,
+            price: productPrice,
             quantity: 1
         }
         cart.push(product)
@@ -49,6 +46,7 @@ btnAddToCart.forEach((button) => {
         localStorage.setItem("cart", JSON.stringify(cart))
     }
     saveCart(cart)
+    updateCartCounter()
     })
 })
 
@@ -56,3 +54,15 @@ function getProductsCart(){
     const products = localStorage.getItem("cart")
     return products ? JSON.parse(products) : [];
 }
+
+function updateCartCounter(){
+    const cart = getProductsCart()
+    let total = 0
+
+    cart.forEach(product => {
+        total += product.quantity
+    })
+    document.getElementById("cart-counter").textContent = total
+}
+
+updateCartCounter()
