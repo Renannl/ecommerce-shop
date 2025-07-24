@@ -91,3 +91,25 @@ function renderCartTable(){
     })
 }
 renderCartTable()
+
+const tableBody = document.querySelector("#modal-1-content table tbody")
+tableBody.addEventListener("click", event => {
+    if (event.target.classList.contains("btn-remove")) {
+    const id = event.target.dataset.id
+    removeProductFromCart(id)
+    }
+})
+
+function saveCart(cart) {
+        localStorage.setItem("cart", JSON.stringify(cart))
+}
+
+function removeProductFromCart(id) {
+    const products = getProductsCart()
+    console.log(products)
+    const updatedCart = products.filter(product => product.id !== id)
+    console.log(updatedCart)
+    saveCart(updatedCart)
+    updateCartCounter()
+    renderCartTable()
+} 
