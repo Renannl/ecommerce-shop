@@ -46,8 +46,7 @@ btnAddToCart.forEach((button) => {
         localStorage.setItem("cart", JSON.stringify(cart))
     }
     saveCart(cart)
-    updateCartCounter()
-    renderCartTable()
+    updateCartAndTable()
     })
 })
 
@@ -66,7 +65,6 @@ function updateCartCounter(){
     document.getElementById("cart-counter").textContent = total
 }
 
-updateCartCounter()
 
 function renderCartTable(){
     const products = getProductsCart()
@@ -81,22 +79,35 @@ function renderCartTable(){
                             <td>${product.name}</td>
                             <td class="td-price-unitary">$${product.price}</td>
                             <td class="td-quantity">
-                                <input type="number" value="${product.quantity}" min="1">
+                                <input type="number" class="input-quantity" data-id="${product.id}" value="${product.quantity}" min="1">
                             </td>
-                            <td class="td-total-price">$${product.price}</td>
+                            <td class="td-total-price">$${product.price * product.quantity}</td>
                             <td>
                                 <button class="btn-remove" data-id="${product.id}"></button>
                             </td>`
         tableBody.appendChild(tr)
     })
 }
-renderCartTable()
+
 
 const tableBody = document.querySelector("#modal-1-content table tbody")
 tableBody.addEventListener("click", event => {
     if (event.target.classList.contains("btn-remove")) {
     const id = event.target.dataset.id
     removeProductFromCart(id)
+    }
+})
+
+tableBody.addEventListener("input", event => {
+    if(event.target.classList.contains("input-quantity")){
+        const products = getProductsCart()
+        const product = products.find(product => product.id === event.target.dataset.id)
+        let newQuantity = parseInt(event.target.value)
+        if(product){
+            product.quantity = newQuantity
+        }
+        saveCart(products)
+        updateCartAndTable()
     }
 })
 
@@ -110,6 +121,27 @@ function removeProductFromCart(id) {
     const updatedCart = products.filter(product => product.id !== id)
     console.log(updatedCart)
     saveCart(updatedCart)
+    updateCartAndTable()
+} 
+
+function updateCartTotal() {
+    const carrinho = getProductsCart();
+    let total = 0;
+
+    carrinho.forEach(item => {
+    total += item.price * (item.quantity || 1);
+    });
+
+    const totalSpan = document.getElementById('cart-total');
+    if (totalSpan) {
+    totalSpan.textContent = `Total: $ ${total}`;
+    }
+}
+
+function updateCartAndTable(){
     updateCartCounter()
     renderCartTable()
-} 
+    updateCartTotal()
+}
+
+updateCartAndTable()
