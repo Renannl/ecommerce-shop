@@ -209,7 +209,24 @@
                     </tbody>
                 </table>
                 <div class="container-price">
-                    <span class="total-cart" id="cart-total">Total: $00.00</span>
+                    <div class="container-shipping-code">
+                        <label for="zip">Calculate Shipping:</label>
+                        <div class="container-zip-inputs">
+                            <input type="text" placeholder="Insert your ZIP code" id="input-zip">
+                            <button id="calculate-zip">Calculate ZIP</button>
+                        </div>
+                    </div>
+
+                    <div class="container-total-price">
+                        <span id="subtotal-orders">Subtotal of orders:
+                            <span class="price">$ 10.00</span> 
+                        </span>
+                        <span id="shipping-value">Shipping Value: 
+                            <span class="price"></span>
+                        </span>
+                        <span id="total-cart">Total: $100.00</span>
+                    </div>
+
                     <button class="checkout" id="checkout">Checkout</button>
                 </div>
             </div>

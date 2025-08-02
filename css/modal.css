@@ -124,6 +124,94 @@ td .btn-remove {
   background-color: var(--primary-color-hover);
 }
 
+.container-total-price {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+  font-size: 1rem;
+}
+
+#subtotal-orders, #shipping-value {
+  color: #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#shipping-value{
+  display: none;
+}
+
+#subtotal-orders .price,
+#shipping-value .price {
+  color: #6affb7;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+#total-cart {
+  color: #6affb7;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 8px;
+  display: block;
+  text-align: right;
+}
+
+#input-zip {
+  padding: 8px 12px;
+  width: 100%;
+  max-width: 220px;
+  border: 1px solid #6affb7;
+  border-radius: 6px;
+  background: transparent;
+  color: #6affb7;
+  font-size: 1rem;
+  font-weight: 400;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#input-zip::placeholder{
+  color: #6affb7;
+  opacity: 0.5;
+  font-weight: 400;
+}
+
+#calculate-zip{
+  padding: 8px 20px;
+  border: 1px solid #6affb7;
+  border-radius: 6px;
+  background: transparent;
+  color: #6affb7;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  outline: none;
+}
+
+#calculate-zip:focus,
+#calculate-zip:hover{
+  background: #6affb7;
+  color: #1a1a2e;
+}
+
+.container-shipping-code{
+  display: flex;
+  flex-direction: column;
+  margin: 16px 0;
+  gap: 8px;
+}
+
+.container-zip-inputs{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
 @media (min-width: 769px) {
   .modal.is-open {
     display: flex;
