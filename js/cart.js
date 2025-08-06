@@ -1,20 +1,3 @@
-/*
-Objetivo 1 - quando clicar no botão de adicionar ao carrinho:
-    - atualizar o contador
-    - adicionar o produto no localStorage
-    - atualizar a tabela HTML do carrinho
-
-Objetivo 2 - remover produtos do carrinho:
-    - ouvir o botão de deletar
-    - remover do localStorage
-    - atualizar o DOM e o total
-
-Objetivo 3 - atualizar valores do carrinho:
-    - ouvir mudanças de quantidade
-    - recalcular total individual
-    - recalcular total geral
-*/
-
 const btnAddToCart = document.querySelectorAll(".add-to-cart");
 
 btnAddToCart.forEach((button) => {
@@ -65,7 +48,6 @@ function updateCartCounter(){
     document.getElementById("cart-counter").textContent = total
 }
 
-
 function renderCartTable(){
     const products = getProductsCart()
     const tableBody = document.querySelector("#modal-1-content table tbody")
@@ -88,7 +70,6 @@ function renderCartTable(){
         tableBody.appendChild(tr)
     })
 }
-
 
 const tableBody = document.querySelector("#modal-1-content table tbody")
 tableBody.addEventListener("click", event => {
@@ -142,11 +123,17 @@ function updateCartAndTable(){
     updateCartCounter()
     renderCartTable()
     updateCartTotal()
+    calculateSubtotal()
 }
 
 updateCartAndTable()
 
 async function calculateShipping(zip) {
+    btnCalculateShipping.disabled = true
+    const originalText = btnCalculateShipping.textContent
+    btnCalculateShipping.textContent = "Calculating..."
+
+
     const url = "https://renanlovo.app.n8n.cloud/webhook/8d3c2832-77b3-4dd5-9b8e-7c44d952a97d";
 
     try {
@@ -186,12 +173,22 @@ async function calculateShipping(zip) {
     } catch (error) {
         console.error("Error at calculation:", error);
         return null;
+    }finally{
+        btnCalculateShipping.disabled = false
+        btnCalculateShipping.textContent = originalText
     }
 }
 
 const btnCalculateShipping = document.getElementById("calculate-zip");
 const inputZip = document.getElementById("input-zip");
 const priceShip = document.getElementById("price-ship");
+
+inputZip.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        btnCalculateShipping.click();
+    }
+});
 
 btnCalculateShipping.addEventListener("click", async () => {
     const zip = inputZip.value.trim();
@@ -204,7 +201,6 @@ btnCalculateShipping.addEventListener("click", async () => {
     }
     errorZip.style.display = "none";
 
-    // Chama API de frete
     const shippingValue = await calculateShipping(zip);
 
     if (shippingValue === undefined || shippingValue === null || isNaN(shippingValue)) {
@@ -213,15 +209,17 @@ btnCalculateShipping.addEventListener("click", async () => {
         return;
     }
 
-    // Atualiza valor do frete
     document.querySelector("#price-ship .value").textContent = 
         shippingValue.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
     document.querySelector("#price-ship").style.display = "flex";
 
-    // ✅ Calcula subtotal dinâmico
     const subtotal = calculateSubtotal();
 
-    // ✅ Soma subtotal + frete
+    document.querySelector("[data-micromodal-trigger='modal-1']")
+    .addEventListener("click", () => {
+        updateCartAndTable();
+    });
+
     const totalWithShipping = subtotal + shippingValue;
     const cartTotalElement = document.querySelector("#total-cart");
     if (cartTotalElement) {
@@ -232,12 +230,10 @@ btnCalculateShipping.addEventListener("click", async () => {
 function calculateSubtotal() {
     let subtotal = 0;
 
-    // Soma os valores de cada item no carrinho
     document.querySelectorAll(".td-total-price").forEach(item => {
         subtotal += parseFloat(item.textContent.replace(/[^0-9.-]+/g, "")) || 0;
     });
 
-    // Atualiza o HTML
     const subtotalElement = document.querySelector("#subtotal-orders .price");
     if (subtotalElement) {
         subtotalElement.textContent = subtotal.toLocaleString('en-US', {
@@ -248,8 +244,6 @@ function calculateSubtotal() {
 
     return subtotal;
 }
-
-
 
 function validateZip(zip) {
     const regexCep = /^[0-9]{5}-?[0-9]{3}$/;
