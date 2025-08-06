@@ -213,18 +213,19 @@
                         <label for="zip">Calculate Shipping:</label>
                         <div class="container-zip-inputs">
                             <input type="text" placeholder="Insert your ZIP code" id="input-zip">
+                            <span class="error"></span>
                             <button id="calculate-zip">Calculate ZIP</button>
                         </div>
                     </div>
 
                     <div class="container-total-price">
                         <span id="subtotal-orders">Subtotal of orders:
-                            <span class="price">$ 10.00</span> 
+                            <span class="price">$ 0.00</span> 
                         </span>
-                        <span id="shipping-value">Shipping Value: 
-                            <span class="price"></span>
+                        <span id="price-ship">
+                            Shipping: <span class="value"></span>
                         </span>
-                        <span id="total-cart">Total: $100.00</span>
+                        <span id="total-cart">Total: $0.00</span>
                     </div>
 
                     <button class="checkout" id="checkout">Checkout</button>
@@ -234,7 +235,7 @@
     </div>
 
     <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
-    <script src="./js/cart.js"></script>
+    <script src="./js/cart.js" defer></script>
     <script src="./js/modal.js"></script>
     <script src="./js/menu.js"></script>
 </body>

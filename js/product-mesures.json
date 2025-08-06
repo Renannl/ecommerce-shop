@@ -1,0 +1,16 @@
+[
+{
+    "id": "camiseta-roxa",
+    "height": 3,
+    "width": 20,
+    "lenght": 30,
+    "weight": 0.25
+},
+{
+    "id": "caneca-branca",
+    "height": 10,
+    "width": 12,
+    "lenght": 10,
+    "weight": 0.45
+}
+]

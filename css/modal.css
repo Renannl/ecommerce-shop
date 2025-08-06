@@ -179,6 +179,13 @@ td .btn-remove {
   font-weight: 400;
 }
 
+.error{
+  color: #ff4d4d;
+  font-size: 0.875rem;
+  margin-top: 4px;
+  display: none;
+}
+
 #calculate-zip{
   padding: 8px 20px;
   border: 1px solid #6affb7;
@@ -210,6 +217,19 @@ td .btn-remove {
   flex-direction: column;
   gap: 8px;
   align-items: flex-start;
+}
+
+#price-ship {
+  color: #e0e0e0;
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#price-ship .value {
+  color: #6affb7;
+  font-weight: 500;
+  margin-left: 8px;
 }
 
 @media (min-width: 769px) {
